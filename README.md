@@ -11,6 +11,15 @@ You can use this input for allowing your users to enter and work with a list of 
 6. Subscribe to event of changing list both of adding or removing
 7. Only unque emails are allowed for entering
 
+## Requirements
+`npm >= 6.14.4`    
+
+## Run
+
+1. Install dependencies `npm install`
+2. Run for developing `npm run start:dev`. Application will be available by address `localhost:5000`
+3. Build for deploy `npm run build`. Build app will be located in the `./dist/app.js` file
+
 ## Usage
 **The sturcture of html:**
 
@@ -37,30 +46,46 @@ For creation emails input you must transfer several parameters into constructor.
 **Using methods**
 1. Get valid email count.
 			
-			var  countEmailBtn = document.getElementById("count-email");
-			countEmailBtn.addEventListener("click", function(e) {
-					alert(emailInput.getValidEmailCount());
-			})	
+        var  countEmailBtn = document.getElementById("count-email");
+        countEmailBtn.addEventListener("click", function(e) {
+                alert(emailInput.getValidEmailCount());
+        })	
 2. Add random email.
 			
-			var  addEmailBtn = document.getElementById("add-email");
-			addEmailBtn.addEventListener("click", function(e) {
-					emailInput.addRandomEmail();
-			});
+        var  addEmailBtn = document.getElementById("add-email");
+        addEmailBtn.addEventListener("click", function(e) {
+                emailInput.addRandomEmail();
+        });
 3. Replace list of email with new ones.
 		
-			var  replaceEmailBtn = document.getElementById("replace-email");
-			replaceEmailBtn.addEventListener("click", function(e) {
-				emailInput.replaceEmailList(["a@a.com", "b@b.com", "asdasd"]);
-			});
+        var  replaceEmailBtn = document.getElementById("replace-email");
+        replaceEmailBtn.addEventListener("click", function(e) {
+            emailInput.replaceEmailList(["a@a.com", "b@b.com", "asdasd"]);
+        });
 4. Get email list
 			
-			var  getEmailListBtn = document.getElementById("get-email");
-			getEmailListBtn.addEventListener("click", function(e) {
-				emailInput.getEmailList();
-			});
+        var  getEmailListBtn = document.getElementById("get-email");
+        getEmailListBtn.addEventListener("click", function(e) {
+            emailInput.getEmailList();
+        });
 5. Subscribe on the email list changes
-			
-			emailInput.emailListChangeEventSubscribe(document, function(e) {
-				console.log(e.detail);
-			})
+	
+        emailInput.emailListChangeEventSubscribe(document, function(e) {
+            console.log(e.detail);
+        })
+        
+## Event format
+Email input dispatches events about changing of its email list. 
+This event has property detail with following format:
+    
+    {
+        eventType: "add",
+        email [
+            "some@email.com
+        ]
+    }
+where
+
+`eventType` - can have following values: `"add"`, `"remove"`, `"replace"`
+
+`email` - array of emails which were removed, added, or replaced 

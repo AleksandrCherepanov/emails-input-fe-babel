@@ -1,0 +1,32 @@
+.emails-input {
+    .tag {
+        display: flex;
+
+        margin-right: 0.4rem;
+        margin-bottom: 0.2rem;
+
+        background: rgba(102, 153, 255, 0.2);
+        border-radius: 5rem;
+
+        padding: 0 0.5rem 0 0.5rem;
+    }
+
+    .wrong-tag {
+        display: flex;
+
+        margin-bottom: 0.2rem;
+        margin-right: 0.4rem;
+
+        border-bottom: 1px dashed #D92929;
+    }
+
+    .tag-remove-icon {
+        margin-left: 0.4rem;
+        -moz-user-select: none;
+        user-select: none;
+
+        img {
+            cursor: pointer;
+        }
+    }
+}

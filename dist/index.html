@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email input</title>
+    <script src="app.js"></script>
+</head>
+<body>
+    <div class="form">
+        <div class="form-input">
+            <p>Share <span>Board name</span> with others</p>
+            <div class="emails-input" id="emails-input-1">
+                <div class="text-input" id="emails-input-text-1">
+                    <input type="email" autocomplete="off" placeholder="add more people...">
+                </div>
+            </div>
+        </div>
+        <div class="form-footer">
+            <button id="add-email">Add email</button>
+            <button id="count-email">Get emails count</button>
+        </div>
+    </div>
+    <script>
+        var inputEmail = document.querySelector("#emails-input-1");
+        var emailInput = new EmailInput(inputEmail);
+
+        var countEmailBtn = document.getElementById("count-email");
+        countEmailBtn.addEventListener("click", function(e) {
+            alert(emailInput.getValidEmailCount());
+        })
+
+        var addEmailBtn = document.getElementById("add-email");
+        addEmailBtn.addEventListener("click", function(e) {
+            emailInput.addRandomEmail();
+        });
+
+        emailInput.emailListChangeEventSubscribe(document, function(e) {
+            console.log(e.detail);
+        });
+    </script>
+</body>
+</html>
